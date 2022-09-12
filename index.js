@@ -5,7 +5,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 app.use(cors());
 app.use(express.json());
@@ -60,6 +60,13 @@ async function run() {
         res.status(403).json({ message: "Forbidden access" });
       }
     };
+
+    // root route
+    app.get("/", (req, res) => {
+      res.json({
+        message: "successfully",
+      });
+    });
     // get services
     app.get("/services", async (req, res) => {
       const data = await appointmentCollection
@@ -259,11 +266,6 @@ run().catch(console.dir);
 //   // perform actions on the collection object
 //   client.close();
 // });
-app.get("/", (req, res) => {
-  res.json({
-    message: "successfully",
-  });
-});
 
 app.listen(port, () => {
   console.log("server listen successfully ", port);
