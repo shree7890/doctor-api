@@ -62,7 +62,7 @@ async function run() {
     };
 
     // root route
-    app.get("/", (req, res) => {
+    app.get("/success", (req, res) => {
       res.json({
         message: "successfully",
       });
@@ -266,7 +266,9 @@ run().catch(console.dir);
 //   // perform actions on the collection object
 //   client.close();
 // });
-
+app.get("/", (req, res) => {
+  res.json({ message: "successfully deploy" });
+});
 app.listen(port, () => {
   console.log("server listen successfully ", port);
 });
