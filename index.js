@@ -62,7 +62,7 @@ async function run() {
     };
 
     // root route
-    app.get("/success", (req, res) => {
+    app.get("/result", (req, res) => {
       res.json({
         message: "successfully",
       });
